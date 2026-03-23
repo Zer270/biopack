@@ -1,0 +1,70 @@
+@keyframes rgbGlow {
+    0% {
+        background-position: 0% 50%;
+        text-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+    }
+    50% {
+        background-position: 100% 50%;
+        text-shadow: 0 0 30px rgba(166, 51, 255, 0.7);
+    }
+    100% {
+        background-position: 0% 50%;
+        text-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 0 40px var(--glow-primary), inset 0 0 40px rgba(0, 255, 65, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 60px var(--glow-primary), inset 0 0 60px rgba(0, 255, 65, 0.5);
+    }
+}
+
+@keyframes moveGrid {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(50px);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 20px currentColor;
+    }
+    50% {
+        box-shadow: 0 0 40px currentColor;
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZeroxGaming - Gaming Hub</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1 class="logo-text" id="logo">ZeroxGaming</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">Trang chủ</a></li>
+                <li><a href="#bedrock" class="nav-link">RS Pack Bedrock</a></li>
+                <li><a href="#java" class="nav-link">RS Java</a></li>
+                <li><a href="#pvp" class="nav-link">Box PvP</a></li>
+                <li><a href="#social" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-auth">
+                <span class="admin-badge" id="adminBadge" style="display:none;">ADMIN</span>
+                <button class="btn-auth" id="authBtn">Đăng nhập</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Modal Auth -->
+    <div class="modal" id="authModal">
+        <div class="modal-content">
+            <span class="close" id="closeAuth">&times;</span>
+            <h2>Xác thực</h2>
+            <form id="authForm">
+                <input type="text" placeholder="Username" id="username" required>
+                <input type="password" placeholder="Password" id="password" required>
+                <button type="submit" class="btn-submit">Đăng nhập</button>
+            </form>
+            <p class="form-switch">Chưa có tài khoản? <a href="#" id="registerToggle">Đăng ký</a></p>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="avatar">
+                <img src="https://via.placeholder.com/200" alt="ZeroxGaming Avatar">
+            </div>
+            <h1 class="hero-title">ZeroxGaming</h1>
+            <p class="hero-subtitle">🎮 Gaming Hub • Resource Pack • PvP Rankings</p>
+            <div class="hero-buttons">
+                <button class="btn-primary" onclick="scrollTo('bedrock')">Khám phá</button>
+                <button class="btn-secondary" id="dashboardBtn" style="display:none;">Dashboard</button>
+            </div>
+        </div>
+        <div class="hero-background">
+            <div class="grid-bg"></div>
+        </div>
+    </section>
+
+    <!-- RS Pack Bedrock -->
+    <section id="bedrock" class="section">
+        <div class="container">
+            <h2 class="section-title">RS Pack Bedrock</h2>
+            <div class="packs-grid" id="bedrockPacks">
+                <!-- Loaded dynamically -->
+            </div>
+            <button class="btn-admin" id="addBedrockBtn" style="display:none;">+ Thêm Pack</button>
+        </div>
+    </section>
+
+    <!-- RS Java -->
+    <section id="java" class="section">
+        <div class="container">
+            <h2 class="section-title">RS Java</h2>
+            <div class="packs-grid" id="javaPacks">
+                <!-- Loaded dynamically -->
+            </div>
+            <button class="btn-admin" id="addJavaBtn" style="display:none;">+ Thêm Pack</button>
+        </div>
+    </section>
+
+    <!-- Box PvP -->
+    <section id="pvp" class="section">
+        <div class="container">
+            <h2 class="section-title">Box PvP</h2>
+            <div class="pvp-tabs">
+                <button class="tab-btn active" data-tab="sword">Sword PvP</button>
+                <button class="tab-btn" data-tab="crystal">Crystal PvP</button>
+            </div>
+
+            <!-- Sword PvP -->
+            <div class="tab-content active" id="sword">
+                <div class="pvp-stats">
+                    <div class="stat-card">
+                        <h3>Tổng người chơi</h3>
+                        <p id="swordTotal">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Top Player</h3>
+                        <p id="swordTop">-</p>
+                    </div>
+                </div>
+                <div class="ranking-table">
+                    <table id="swordTable">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Tên Người Chơi</th>
+                                <th>Cấp Độ</th>
+                                <th>Điểm</th>
+                            </tr>
+                        </thead>
+                        <tbody id="swordBody">
+                            <!-- Loaded dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+                <button class="btn-admin" id="addSwordBtn" style="display:none;">+ Thêm Người Chơi</button>
+            </div>
+
+            <!-- Crystal PvP -->
+            <div class="tab-content" id="crystal">
+                <div class="pvp-stats">
+                    <div class="stat-card">
+                        <h3>Tổng người chơi</h3>
+                        <p id="crystalTotal">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Top Player</h3>
+                        <p id="crystalTop">-</p>
+                    </div>
+                </div>
+                <div class="ranking-table">
+                    <table id="crystalTable">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Tên Người Chơi</th>
+                                <th>Cấp Độ</th>
+                                <th>Điểm</th>
+                            </tr>
+                        </thead>
+                        <tbody id="crystalBody">
+                            <!-- Loaded dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+                <button class="btn-admin" id="addCrystalBtn" style="display:none;">+ Thêm Người Chơi</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Links -->
+    <section id="social" class="section social-section">
+        <div class="container">
+            <h2 class="section-title">Kết nối</h2>
+            <div class="social-links">
+                <a href="https://discord.com" class="social-link" target="_blank">
+                    <i class="fab fa-discord"></i>
+                    <span>Discord</span>
+                </a>
+                <a href="https://youtube.com" class="social-link" target="_blank">
+                    <i class="fab fa-youtube"></i>
+                    <span>YouTube</span>
+                </a>
+                <a href="https://tiktok.com" class="social-link" target="_blank">
+                    <i class="fab fa-tiktok"></i>
+                    <span>TikTok</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 ZeroxGaming. All rights reserved.</p>
+    </footer>
+
+    <!-- Admin Modal -->
+    <div class="modal" id="adminModal">
+        <div class="modal-content admin-modal">
+            <span class="close" id="closeAdmin">&times;</span>
+            <h2 id="adminTitle">Thêm Pack</h2>
+            <form id="adminForm">
+                <input type="hidden" id="itemType">
+                <input type="hidden" id="itemId">
+                <input type="text" placeholder="Tên" id="itemName" required>
+                <input type="text" placeholder="Mô tả" id="itemDesc">
+                <input type="url" placeholder="Link Icon/Image" id="itemImage">
+                <input type="url" placeholder="Link Download/URL" id="itemUrl">
+                <input type="text" placeholder="Thông tin thêm (FPS, kiểu...)" id="itemExtra">
+                <button type="submit" class="btn-submit">Lưu</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- PvP Player Modal -->
+    <div class="modal" id="pvpModal">
+        <div class="modal-content admin-modal">
+            <span class="close" id="closePvP">&times;</span>
+            <h2>Thêm Người Chơi</h2>
+            <form id="pvpForm">
+                <input type="hidden" id="pvpType">
+                <input type="text" placeholder="Tên Người Chơi" id="playerName" required>
+                <select id="playerRank" required>
+                    <option value="">-- Chọn Cấp Độ --</option>
+                    <option value="bronze">Đồng</option>
+                    <option value="silver">Bạc</option>
+                    <option value="platinum">Bạch Kim</option>
+                    <option value="diamond">Kim Cương</option>
+                    <option value="pro">Pro</option>
+                </select>
+                <input type="number" placeholder="Điểm" id="playerScore" required>
+                <button type="submit" class="btn-submit">Thêm</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/admin.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
